@@ -1,4 +1,4 @@
-# Matthew Leon
+# Matthew Leone
 
 [![Website](https://img.shields.io/badge/Website-leonematt.com-blue?style=flat&logo=google-chrome&logoColor=white)](https://leonematt.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leonematt/)
@@ -8,33 +8,44 @@
 
 ## 👨‍💻 About Me
 
-Systems software engineer specializing in **high-performance networking**, **data plane optimization**, and **low-latency infrastructure** for financial services and cloud environments. I combine deep expertise in kernel-level development with cloud engineering to build scalable, secure, and ultra-fast distributed systems.
+Senior AI/ML Software Engineer specializing in distributed AI infrastructure, high-performance computing, and systems optimization for machine learning workloads. I bridge the gap between low-level systems engineering and cutting-edge AI/ML platforms, building scalable infrastructure that powers next-generation AI applications.
 
-Currently building **InfraMatrix**, focusing on next-generation hyperscaler technology and performance-optimized solutions for financial services.
+Additionally my experience also spans cloud, security, networking, performance engineering, virtualization and hardware technologies, providing a comprehensive systems foundation for architecting robust and performance-optimized AI/ML infrastructure.
+
+## 🎯 Recent Focus (2025)
+
+- Distributed AI Infrastructure: Building scalable inference systems with vLLM and Ray
+- CUDA Development: Linux and CUDA support integration for AI platforms
+- CI/CD for AI/ML: Automated build, testing, and packaging pipelines for ML frameworks
+- Performance Optimization: GPU acceleration and distributed computing for ML workloads
 
 ## 🚀 Core Expertise
 
-- **High-Performance Networking:** DPDK, VPP, RDMA, network stack optimization, sub-microsecond latency systems
-- **Cloud & Infrastructure:** AWS architecture, containerization, Terraform, infrastructure automation
-- **Low-Level Systems:** Kernel development (Linux/FreeBSD), device drivers, memory optimization
-- **Security Engineering:** Reverse engineering, vulnerability research, exploit development, secure architecture
+- **AI/ML Infrastructure:** Nexus, CUDA, vLLM, Ray
 - **Performance Engineering:** Latency optimization, kernel bypass, profiling, systems tuning
+- **Cloud & Infrastructure:** AWS architecture, containerization, Terraform, CI/CD automation
+- **High-Performance Networking:** DPDK, VPP, RDMA, network stack optimization, kernel bypass, sub-microsecond latency systems
+- **Low-Level Systems:** Kernel development (Linux/FreeBSD), device drivers, memory optimization, NVIDIA
+- **Security Engineering:** Reverse engineering, vulnerability research, exploit development, secure architecture
 
 ## 🔧 Tech Stack
 
 ```
-Languages        : C/C++, Python, Assembly (x86/ARM), Java, Bash, Objective-C
-Systems          : Linux Kernel, FreeBSD, KVM, DPDK, CNDP, Device Drivers
-Networking       : TCP/IP Stack, RDMA, QUIC, IPsec, VxLAN, GENEVE
-Performance      : Perf, Valgrind, Flamegraph, Cyclictest, eBPF
-Cloud & DevOps   : AWS, Docker, Terraform, CI/CD (GitHub Actions, Jenkins)
-Security         : IDA Pro, Ghidra, Penetration Testing
+Languages        : C/C++, Python, Assembly (x86/ARM), Java, Bash
+AI/GPU           : CUDA
+AI/ML Platforms  : vLLM, Ray, TensorFlow, PyTorch
+Systems          : Linux, FreeBSD, NVIDIA, DPDK, eBPF
+Networking       : TCP/IP Stack, RDMA
+Cloud & DevOps   : AWS, Docker, Kubernetes, Terraform, GitHub Actions, Jenkins
+Performance      : Perf, Valgrind, NVIDIA Nsight, Flamegraph, GPU profiling
+Security         : IDA Pro, Ghidra, Penetration Testing, Secure ML pipelines
 Data Engineering : Apache Airflow, Spark, Pandas
 ```
 
 ## 🎓 Certifications
 
 - **AWS Certified Solutions Architect Associate** (2025)
+- **AWS Certified SysOps Administrator Associate** (2025)
 - **AWS Certified Cloud Practitioner** (2025)
 
 ## 📊 GitHub Stats
