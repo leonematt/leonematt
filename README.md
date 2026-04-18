@@ -20,7 +20,6 @@ Currently I work as a Founding AI/ML Infrastructure/Performance Engineer that le
 
 [![AWS Certified Cloud Practitioner](https://img.shields.io/badge/AWS-Cloud_Practitioner-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/users/leonematt)
 [![WorldQuant University Data Science Lab](https://img.shields.io/badge/WorldQuant-Data_Science_Lab-0A2540?style=flat&logoColor=white)](https://www.credly.com/badges/f9ebf4dd-2f64-421d-b112-d66459a7adaf)
-
 ## 🎯 Recent Focus (2025–2026)
 - **ML Infrastructure:** Building the Nexus runtime, Triton-Bench benchmarking platform, and Triton/PyTorch plugin inference stack at Kernelize
 - **MLOps Tooling:** Accelerator kernel capture/replay pipelines, hardware profiling with Nsight Compute, and roofline/occupancy analysis for Triton kernels
