@@ -1,4 +1,4 @@
-# Matthew Leone
+# Matthew Leon
 [![Website](https://img.shields.io/badge/Website-leonematt.com-blue?style=flat&logo=google-chrome&logoColor=white)](https://leonematt.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leonematt/)
 
