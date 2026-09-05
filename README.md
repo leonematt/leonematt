@@ -16,9 +16,14 @@ Currently I work as a Founding AI/ML Infrastructure/Performance Engineer that le
 [![NVIDIA Certified Associate: Generative AI LLMs](https://img.shields.io/badge/NVIDIA-Associate:_GenAI_LLMs-76B900?style=flat&logo=nvidia&logoColor=white)](https://www.credly.com/badges/8f51e829-b50d-445e-9b77-4a81e84988b5/public_url)
 [![NVIDIA Certified Associate: AI Infrastructure and Operations](https://img.shields.io/badge/NVIDIA-Associate:_AI_Infrastructure_&_Operations-76B900?style=flat&logo=nvidia&logoColor=white)](https://www.credly.com/badges/9fc04e7e-16d1-4d78-8e8a-ca2db8dcd0db/public_url)
 [![AWS Certified Solutions Architect Associate](https://img.shields.io/badge/AWS-Solutions_Architect_Associate-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/badges/f1a7348e-1436-4f8c-b840-0f75f842f0db/public_url)
+[![AWS Certified Machine Learning Engineer Associate](https://img.shields.io/badge/AWS-Machine_Learning_Engineer_Associate-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/badges/18c266d1-4842-41be-b412-495c91af53d7/public_url)
+[![AWS Certified Data Engineer Associate](https://img.shields.io/badge/AWS-Data_Engineer_Associate-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/badges/ea08e6d5-b681-454b-9f71-d26ef286f2a9/public_url)
+[![AWS Certified Developer Associate](https://img.shields.io/badge/AWS-Developer_Associate-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/badges/79723f5a-3086-4e50-86a2-53861ce82a65/public_url)
 [![AWS Certified SysOps Administrator Associate](https://img.shields.io/badge/AWS-SysOps_Administrator_Associate-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/badges/ee62f077-e557-4232-8297-314ab916e763/public_url)
 
+[![AWS Certified AI Practitioner](https://img.shields.io/badge/AWS-AI_Practitioner-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/users/leonematt)
 [![AWS Certified Cloud Practitioner](https://img.shields.io/badge/AWS-Cloud_Practitioner-FF9900?style=flat&logo=amazon-aws&logoColor=white)](https://www.credly.com/users/leonematt)
+
 [![WorldQuant University Data Science Lab](https://img.shields.io/badge/WorldQuant-Data_Science_Lab-0A2540?style=flat&logoColor=white)](https://www.credly.com/badges/f9ebf4dd-2f64-421d-b112-d66459a7adaf)
 
 ## 🎯 Recent Focus (2025–2026)
