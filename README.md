@@ -66,7 +66,5 @@ Security              : IDA Pro, Ghidra, reverse engineering, secure ML pipeline
 - **M.S., Financial Engineering** — WorldQuant University
 - **B.S., Computer Science** — Northern Illinois University
 
-## 📊 GitHub Stats
-[![Matthew's GitHub Stats](https://github-readme-stats.vercel.app/api?username=leonematt&show_icons=true&theme=dark)](https://github.com/leonematt)
-[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=leonematt&layout=compact&theme=dark)](https://github.com/leonematt)
 ---
+
