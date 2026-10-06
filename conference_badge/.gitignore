@@ -1,0 +1,8 @@
+build/
+firmware/*.uf2
+firmware/*.part
+secrets.local.py
+__pycache__/
+*.pyc
+._*
+.DS_Store
