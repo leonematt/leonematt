@@ -1,26 +1,24 @@
 # Conf Badge: a wearable name badge for the Tufty 2350.
 #
-# Shows every .png / .jpg in this app's assets/ folder, in filename order,
-# so number the files to set the order (1_badge.png, 2_card.png, 3_qr.png).
-# Images that aren't 320x240 are scaled to fit and centred.
+# Full-screen pictures from this app's assets/ folder: your name card first,
+# and a QR code that B flips to and back.
 #
-#   C or DOWN   next screen
-#   A or UP     previous screen
-#   B           jump to the QR screen (any file with "qr" in its name)
+#   B           flip between the name card and the QR code
+#   UP / DOWN   step through every picture in assets/ (if you add more)
+#   C           back to the menu
 #   HOME        back to the menu
 #
-# The last screen shown is remembered, so after a reset or sleep the badge
-# comes back to the same picture.
+# Every .png / .jpg in assets/ is a screen, in filename order (1_name.png,
+# 2_qr.png, ...). The app opens on the first one; B jumps to the file with
+# "qr" in its name and back to where you were. Images that aren't 320x240
+# are scaled to fit and centred.
 
 import os
 
 APP = "conf_badge"
 EXTS = ("png", "jpg", "jpeg")
-OVERLAY_MS = 1500  # how long the page dots + battery show after a button press
 
 BG = color.rgb(14, 16, 20)
-ACCENT = color.rgb(238, 76, 44)
-DIM = color.rgb(70, 74, 84)
 GREY = color.rgb(138, 145, 158)
 
 badge.mode(HIRES)            # Tufty apps start in 160x120; use the full 320x240
@@ -105,20 +103,15 @@ folder = assets_dir()
 names = list_images(folder) if folder else []
 cache = {}
 
-state = {"index": 0}
-try:
-    loaded = State.load(APP, state)
-    if isinstance(loaded, dict):
-        state = loaded
-except Exception:
-    pass
+qr = None                                # index of the QR screen, if there is one
+for i in range(len(names)):
+    if "qr" in names[i].lower():
+        qr = i
+        break
 
-try:
-    idx = int(state.get("index", 0)) % len(names) if names else 0
-except Exception:                         # corrupted save file: start from the first screen
-    idx = 0
+idx = 0                                  # open on the first picture (the name card)
+back = 0                                 # where B returns to from the QR code
 dirty = True
-overlay_until = 0
 
 
 def get(i):
@@ -130,16 +123,10 @@ def get(i):
     return cache[i]
 
 
-def go(i):
-    global idx, dirty, overlay_until
+def show(i):
+    global idx, dirty
     idx = i % len(names)
     dirty = True
-    overlay_until = badge.ticks + OVERLAY_MS
-    state["index"] = idx
-    try:
-        State.save(APP, state)
-    except Exception:
-        pass
 
 
 # ------------------------------------------------------------------ drawing
@@ -151,31 +138,7 @@ def message(title, detail):
     screen.text(detail, rect(10, 105, W - 20, 80), align=(image.CENTER, image.TOP))
 
 
-def overlay():
-    screen.pen = BG                         # dark strip so it reads on any image
-    screen.rectangle(0, H - 20, W, 20)
-    n = len(names)
-    if n > 1:
-        gap = 10
-        x0 = W // 2 - (n - 1) * gap // 2
-        for i in range(n):
-            screen.pen = ACCENT if i == idx else DIM
-            screen.circle(x0 + i * gap, H - 10, 3)
-    try:
-        level = badge.battery_level()
-    except Exception:
-        return
-    bx, by = W - 32, H - 15                 # small battery gauge, bottom right
-    screen.pen = GREY
-    screen.rectangle(bx, by, 22, 10)
-    screen.rectangle(bx + 22, by + 3, 2, 4)
-    screen.pen = BG
-    screen.rectangle(bx + 1, by + 1, 20, 8)
-    screen.pen = ACCENT if level < 20 else color.rgb(240, 242, 245)
-    screen.rectangle(bx + 2, by + 2, max(1, 18 * level // 100), 6)
-
-
-def draw(with_overlay):
+def draw():
     screen.pen = BG
     screen.clear()
     if not names:
@@ -186,29 +149,29 @@ def draw(with_overlay):
         message("Can't load " + names[idx], img)
     else:
         screen.blit(img, vec2((W - img.width) // 2, (H - img.height) // 2))
-    if with_overlay:
-        overlay()
 
 
 def update():
-    global dirty, overlay_until
-    if names:
-        if badge.pressed(BUTTON_C) or badge.pressed(BUTTON_DOWN):
-            go(idx + 1)
-        elif badge.pressed(BUTTON_A) or badge.pressed(BUTTON_UP):
-            go(idx - 1)
-        elif badge.pressed(BUTTON_B):
-            for i in range(len(names)):
-                if "qr" in names[i].lower():
-                    go(i)
-                    break
+    global dirty, back
 
-    showing = badge.ticks < overlay_until
-    if dirty or (overlay_until and not showing):
-        draw(showing)
+    if badge.pressed(BUTTON_C):
+        return True                      # leave the app; the badge resets into the menu
+
+    if names:
+        if badge.pressed(BUTTON_B) and qr is not None:
+            if idx == qr:
+                show(back)
+            else:
+                back = idx
+                show(qr)
+        elif badge.pressed(BUTTON_DOWN):
+            show(idx + 1)
+        elif badge.pressed(BUTTON_UP):
+            show(idx - 1)
+
+    if dirty:
+        draw()
         dirty = False
-        if not showing:
-            overlay_until = 0
 
 
 run(update)
