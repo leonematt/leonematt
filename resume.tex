@@ -1,0 +1,138 @@
+% ---------------------------------------------------------------
+% Build variants:
+%   Engineering (bring-up platform first):  pdflatex resume.tex
+%   Business    (Tenstorrent first):        pdflatex "\def\BIZFIRST{}\input{resume.tex}"
+%   Runtime     (knexus + PyTorch/vLLM first): pdflatex "\def\RUNTIMEFIRST{}\input{resume.tex}"
+%   (if both BIZFIRST and RUNTIMEFIRST are set, RUNTIMEFIRST wins)
+%   Performance headline instead of AI infra: add \def\PERFHEADLINE{} the same way
+%     e.g. pdflatex "\def\PERFHEADLINE{}\def\BIZFIRST{}\input{resume.tex}"
+% Hardware name used in the bring-up bullet -- edit here if needed:
+\providecommand{\bringuphw}{AWS Trainium}
+% ---------------------------------------------------------------
+\newif\ifbizfirst
+\ifdefined\BIZFIRST \bizfirsttrue \fi
+\newif\ifruntimefirst
+\ifdefined\RUNTIMEFIRST \runtimefirsttrue \fi
+\ifdefined\PERFHEADLINE
+  \newcommand{\headline}{Founding Engineer --- ML Platforms \& Performance}
+\else
+  \newcommand{\headline}{Founding Engineer --- AI Infrastructure \& Agentic Developer Platforms}
+\fi
+
+\documentclass[letterpaper,10pt]{article}
+\usepackage[margin=0.55in,top=0.45in,bottom=0.5in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{tabularx}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\definecolor{secbg}{gray}{0.85}
+
+\newcommand{\secbox}[1]{\colorbox{secbg}{\strut\,#1\,}}
+\titleformat{\section}{\large\bfseries}{}{0pt}{\secbox}[\vspace{-4pt}\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+\setlist[itemize]{leftmargin=2.2em,topsep=1pt,itemsep=1pt,parsep=0pt,label=$\bullet$}
+
+\newcommand{\job}[4]{%
+  \textbf{#1} \hfill #2\\
+  #3 \hfill #4\vspace{-2pt}}
+
+\begin{document}
+
+\begin{center}
+{\Huge\bfseries Matthew Leon}\\[2pt]
+{\large \headline}\\[3pt]
+\underline{\href{mailto:matthew.leon.tech@gmail.com}{matthew.leon.tech@gmail.com} $|$ \href{https://leonematt.com}{leonematt.com} $|$ 571-598-5122 $|$ \href{https://github.com/leonematt}{github.com/leonematt}}
+\end{center}
+\vspace{-6pt}
+
+\section{Summary}
+Founding engineer with 10+ years across the stack and a security engineering background. At Kernelize, built an agentic model bring-up platform MVP that cut bring-up time from $\sim$1 week to $\sim$1 hour, built a C++ runtime for serving models on heterogeneous accelerators, and sourced the company's first major revenue partnership (Tenstorrent). As founder of InfraMatrix, built ML-driven trading systems for crypto hedge funds; at Intel, built DPU validation, virtualization, and CI/CD infrastructure for multiple product teams.
+
+\section{Work Experience}
+
+\job{Founding Engineer, AI Infrastructure {\normalfont (Employee \#3)}}{Jun.\ 2025 -- Oct.\ 2026}{Kernelize}{Portland, OR (Remote)}
+\newcommand{\bringupitem}{\item Designed and built an agentic model bring-up platform MVP (Temporal, Python, PyTorch) that automates recipe and infrastructure changes, gating every agent change on activation-, tensor-, and token-level comparisons against a known-good CUDA reference run so the agent cannot game its way to a pass; demonstrated model bring-up on \bringuphw{} in $\sim$1 hour versus $\sim$1 week manually (97.5\% faster iteration) at nominal compute cost}
+\newcommand{\partneritem}{\item Sourced Kernelize's Tenstorrent partnership, the company's first major revenue line, which became the core of its go-to-market strategy}
+\newcommand{\knexusitem}{\item Built knexus, a C++ runtime that launches the hardware workloads required to serve AI/ML models on heterogeneous accelerators}
+\newcommand{\integitem}{\item Integrated knexus with PyTorch through a custom PrivateUse1 C++/pybind11 backend (allocator, device guard, op registration, kernel dispatch), running full MLP inference end-to-end; built a vLLM plugin to validate model serving through knexus}
+\newcommand{\profitem}{\item Built accelerator profiling tooling: a VS Code workbench and Python backend rendering real nn.Module trees, roofline charts, and HW-counter health scores from NCU and rocprof data; benchmarked Triton kernels on state-of-the-art hardware in collaboration with Meta}
+\begin{itemize}
+  \ifruntimefirst
+    \knexusitem \integitem \bringupitem \partneritem \profitem
+  \else\ifbizfirst
+    \partneritem \bringupitem \knexusitem \integitem \profitem
+  \else
+    \bringupitem \partneritem \knexusitem \integitem \profitem
+  \fi\fi
+\end{itemize}
+\vspace{3pt}
+
+\job{Founder \& CTO {\normalfont (concurrent with Kernelize since Jun.\ 2025)}}{Jul.\ 2024 -- Present}{InfraMatrix}{Portland, OR}
+\begin{itemize}
+  \item Consulted with hedge funds on building high-performance trading systems for cryptocurrency: data-engineered pricing data for fine-tuning, then fine-tuned financial transformer models for medium-term price-delta prediction
+  \item Prototyped a next-generation hyperscaler substrate built on KVM, Open vSwitch, and Ceph
+\end{itemize}
+\vspace{3pt}
+
+\job{Systems Software Engineer}{Feb.\ 2022 -- Jul.\ 2024}{Intel}{Hillsboro, OR}
+\begin{itemize}
+  \item Worked as an internal consultant across networking, virtualization, cloud, and performance for multiple Intel product teams
+  \item Built the initial control- and data-plane validation software stack for Intel's Phantom Lake DPU using Python, C, VPP, and DPDK
+  \item Wrote the main technical marketing application for the ACRN hypervisor -- a low-latency inter-VM shared-memory app in C++/Python/Flask validated with Cyclictest for real-time jitter
+  \item Developed and maintained CI/CD infrastructure (GitHub Actions, Docker, PostgreSQL) for CPU modelling software and blockchain teams
+  \item Modernized a CPU modelling build system by porting its csh scripts to Python, improving modularity and test coverage
+\end{itemize}
+\vspace{3pt}
+
+\job{Security Software Engineer}{Jul.\ 2021 -- Jan.\ 2022}{Raytheon}{San Antonio, TX}
+\begin{itemize}
+  \item Worked as a reverse engineer and vulnerability researcher focused on networking hardware within Raytheon's CODEX program
+  \item Reverse-engineered MIPS-based networking hardware using Python and Ghidra, identifying vulnerabilities and developing exploit payloads
+\end{itemize}
+\vspace{3pt}
+
+\job{Software Engineer}{Oct.\ 2019 -- Jul.\ 2021}{Northrop Grumman}{Landover, MD}
+\begin{itemize}
+  \item Worked as a FreeBSD kernel software engineer for a DoD client
+  \item Engineered an in-house Mandatory Access Control framework in C and C++, and implemented a user-space auditing system in Objective-C to prevent unauthorized access to protected resources
+\end{itemize}
+\vspace{3pt}
+
+\job{Security Software Engineer}{Jan.\ 2018 -- Sep.\ 2019}{Booz Allen Hamilton}{Annapolis Junction, MD}
+\begin{itemize}
+  \item Worked as a security engineer focused on reverse engineering, vulnerability research, and secure software development
+  \item Prototyped a secure channel for pushing hardware updates from a VM through the hypervisor host and into hardware via its virtual file I/O subsystem
+  \item Reverse-engineered ARM-based Industrial Control System devices using IDA Pro and Ghidra, identifying vulnerabilities and developing exploit payloads
+\end{itemize}
+\vspace{3pt}
+
+\job{Software Engineer}{May 2015 -- Aug.\ 2017}{IBM}{Raleigh, NC}
+\begin{itemize}
+  \item Worked as a software engineer focused on cloud and security across multiple rotations
+\end{itemize}
+
+\section{Technical Skills}
+\textbf{Languages}: Python, C, C++, Bash, TypeScript, Objective-C, Csh\\
+\textbf{ML / GPU}: PyTorch, vLLM, Triton, CUDA/PTX, HIP/ROCm, Inductor, Nsight Systems, NCU, rocprof\\
+\textbf{Infrastructure}: Docker, GitHub Actions, Terraform, Temporal, ClickHouse, AWS, AMD Developer Cloud\\
+\textbf{Systems}: Linux, FreeBSD, KVM, ACRN hypervisor, DPDK, CNDP, RDMA / InfiniBand, device drivers\\
+\textbf{Concepts}: MLOps, ML compiler toolchains, kernel benchmarking, roofline / HW-counter analysis, distributed inference, CI/CD
+
+\section{Certifications}
+\textbf{NVIDIA}: Professional -- AI Infrastructure, AI Operations; Associate -- Generative AI LLMs, Generative AI Multimodal, AI Infrastructure \& Operations\\
+\textbf{Amazon Web Services}: Associate -- Machine Learning, Solutions Architect, SysOps Administrator; Practitioner -- AI, Cloud\\
+\textbf{WorldQuant University}: Data Science Lab
+
+\section{Education}
+\begin{itemize}[leftmargin=1em,label={}]
+  \item \textbf{WorldQuant University} \hfill Remote\\ \textbf{M.S. in Financial Engineering}
+
+  \item \textbf{Northern Illinois University} \hfill DeKalb, IL\\ \textbf{B.S. in Computer Science, Minor in Mathematics}
+\end{itemize}
+
+\end{document}
